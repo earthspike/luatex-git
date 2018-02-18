@@ -1,0 +1,43 @@
+\documentclass[a4paper]{article}
+
+% You need this. It can go here or in the document, but if you want to
+% use it for headers/footers, it needs to go before them.
+\directlua{dofile("luagit.lua")}
+
+% Example footer with repo status in it
+\usepackage{fancyhdr}
+ 
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[R]{\LaTeX\ and git}
+\fancyhead[L]{}
+\fancyfoot[L]{\tiny\ifingit\gitbranch:\lastgitcommitref\\
+  \lastgitcommitname\ $<$\lastgitcommitemail$>$\\
+  \lastgitcommitdate\ifchangedsincegitcommit [DRAFT]\fi\else (Not in git)\fi}
+\fancyfoot[R]{\thepage}
+
+\title{Reading status of \LaTeX\ source repository into document}
+\author{Earthspike}
+\date{17 Feb 18}
+
+\begin{document}
+
+\begin{titlepage}
+\maketitle
+\end{titlepage}
+
+
+\section{Reading status of \LaTeX\ source repository into document}
+
+This document demonstrates how to read the status of the git repo in which the document's source sits.
+
+\ifingit Git branch: {\bf\gitbranch}\par
+Commit: {\bf\lastgitcommitref\\
+  \lastgitcommitname\ $<$\lastgitcommitemail$>$}\par
+Date: {\bf\lastgitcommitdate}\par
+Changed in working area?: {\bf\ifchangedsincegitcommit Yes\else No\fi}
+\else
+Not in git
+\fi\par
+
+\end{document}
