@@ -1,8 +1,8 @@
 \documentclass[a4paper]{article}
 
-% You need this. It can go here or in the document, but if you want to
-% use it for headers/footers, it needs to go before them.
-\directlua{dofile("luagit.lua")}
+% All you need to use is this one line, then it populates all the \git.. variables.
+% If you want to use it for headers/footers, it needs to go before them.
+\usepackage{luagit}
 
 % Example footer with repo status in it
 \usepackage{fancyhdr}
@@ -11,14 +11,14 @@
 \fancyhf{}
 \fancyhead[R]{\LaTeX\ and git}
 \fancyhead[L]{}
-\fancyfoot[L]{\tiny\ifingit\gitbranch:\lastgitcommitref\\
-  \lastgitcommitname\ $<$\lastgitcommitemail$>$\\
-  \lastgitcommitdate\ifchangedsincegitcommit [DRAFT]\fi\else (Not in git)\fi}
+\fancyfoot[L]{\tiny\ifingit\gitbranch:\gitcommithash\\
+  \gitcommitauthorname\ $<$\gitcommitauthoremail$>$\\
+  \gitcommitauthordate\ifchangedsincegitcommit [DRAFT]\fi\else (Not in git)\fi}
 \fancyfoot[R]{\thepage}
 
 \title{Reading status of \LaTeX\ source repository into document}
 \author{Earthspike}
-\date{17 Feb 18}
+\date{18 Feb 18}
 
 \begin{document}
 
@@ -29,15 +29,30 @@
 
 \section{Reading status of \LaTeX\ source repository into document}
 
-This document demonstrates how to read the status of the git repo in which the document's source sits.
+This document demonstrates how to read the status of the git repo in
+which the document's source sits. More variables are documented in the
+\verb|luagit.sty| file.
 
+{\parindent0pt
 \ifingit Git branch: {\bf\gitbranch}\par
-Commit: {\bf\lastgitcommitref\\
-  \lastgitcommitname\ $<$\lastgitcommitemail$>$}\par
-Date: {\bf\lastgitcommitdate}\par
+Commit: {\bf\gitcommithash}\par
+Author: {\bf\gitcommitauthorname\ $<$\gitcommitauthoremail$>$} {\bf\gitcommitauthordate}\par
+Comitter: {\bf\gitcommitcommittername\ $<$\gitcommitcommitteremail$>$} {\bf\gitcommitcommitterdate}\par
 Changed in working area?: {\bf\ifchangedsincegitcommit Yes\else No\fi}
 \else
 Not in git
 \fi\par
+}
+
+See \verb|https://github.com/earthspike/luatex-git| for more details/latest version.
+
+\section{Roadmap}
+
+\begin{enumerate}
+\item Add in reflog selectors, etc
+  
+\item Read which tags are pointing to the current commit
+  
+\end{enumerate}
 
 \end{document}

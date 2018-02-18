@@ -1,0 +1,67 @@
+%% luagit.sty
+%%
+%%  https://github.com/earthspike/luatex-git
+%%
+%% Sets the following TeX variables: 
+%%  \ifingit                       = true if in a git repository
+%%  \gitbranch                     = name of (local) git branch
+%%  \gitcommithash                 = commit hash
+%%  \gitcommithashshort            = abbreviated commit hash
+%%  \gitcommittreehash             = tree hash
+%%  \gitcommittreehashshort        = abbreviated tree hash
+%%  \gitcommitparenthashes         = parent hashes
+%%  \gitcommitparenthashesshort    = abbreviated parent hashes
+%%  \gitcommitauthorname           = author name
+%%  \gitcommitauthornamemapped     = author name (respecting .mailmap, see git-shortlog(1) or git-blame(1))
+%%  \gitcommitauthoremail          = author email
+%%  \gitcommitauthoremailmapped    = author email (respecting .mailmap, see git-shortlog(1) or git-blame(1))
+%%  \gitcommitauthordate           = author date, ISO 8601 format
+%%  \gitcommitcommittername        = committer name
+%%  \gitcommitcomitternamemapped   = committer name (respecting .mailmap, see git-shortlog(1) or git-blame(1))
+%%  \gitcommitcommitteremail       = committer email
+%%  \gitcommitcommitteremailmapped = committer email (respecting .mailmap, see git-shortlog(1) or git-blame(1))
+%%  \gitcommitcommitterdate        = committer date, ISO 8601 format
+%%  \gitcommitrefnames             = ref names, like the --decorate option of git-log(1)
+%%  \gitcommitencoding             = encoding
+%%  \gitcommitsubject              = subject
+%%  \gitcommitsubjectsanitised     = sanitized subject line, suitable for a filename
+%%  \gitcommitbody                 = body
+%%  \gitcommitbodyraw              = raw body (unwrapped subject and body)
+%%  \gitcommitnotes                = commit notes
+%%  \gitcommitsignaturestatus      = "G" for a Good signature, "B" for a Bad signature, "U" for a good, untrusted signature and "N" for no signature
+%%  \gitcommitsigner               = name of the signer for a signed commit
+%%  \gitcommitkey                  = key used to sign a signed commit
+%%  \ifchangedsincegitcommit = true if changed files in working area since commit
+%%
+%%-- Define and default all TeX variables as if not in a git repo
+\newif\ifingit\ingitfalse
+\def\gitbranch{}
+\def\gitcommithash{}
+\def\gitcommithashshort{}
+\def\gitcommittreehash{}
+\def\gitcommittreehashshort{}
+\def\gitcommitparenthashes{}
+\def\gitcommitparenthashesshort{}
+\def\gitcommitauthorname{}
+\def\gitcommitauthornamemapped{}
+\def\gitcommitauthoremail{}
+\def\gitcommitauthoremailmapped{}
+\def\gitcommitauthordate{}
+\def\gitcommitcommittername{}
+\def\gitcommitcomitternamemapped{}
+\def\gitcommitcommitteremail{}
+\def\gitcommitcommitteremailmapped{}
+\def\gitcommitcommitterdate{}
+\def\gitcommitrefnames{}
+\def\gitcommitencoding{}
+\def\gitcommitsubject{}
+\def\gitcommitsubjectsanitised{}
+\def\gitcommitbody{}
+\def\gitcommitbodyraw{}
+\def\gitcommitnotes{}
+\def\gitcommitsignaturestatus{}
+\def\gitcommitsigner{}
+\def\gitcommitkey{}
+\newif\ifchangedsincegitcommit\changedsincegitcommittrue
+
+\directlua{dofile("luagitsty.lua")}
