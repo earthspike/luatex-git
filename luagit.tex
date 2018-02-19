@@ -33,6 +33,49 @@ This document demonstrates how to read the status of the git repo in
 which the document's source sits. More variables are documented in the
 \verb|luagit.sty| file.
 
+\begin{tabular}{ll}
+  Macro & Expansion for this file \\\hline
+  
+\verb|\ifingit|&\ifingit true\else false\fi \\
+\verb|\gitbranch|&\gitbranch \\
+\verb|\gitcommithash|&\gitcommithash \\
+\verb|\gitcommithashshort|&\gitcommithashshort \\
+\verb|\gitcommittreehash|&\gitcommittreehash \\
+\verb|\gitcommittreehashshort|&\gitcommittreehashshort \\
+\verb|\gitcommitparenthashes|&\gitcommitparenthashes \\
+\verb|\gitcommitparenthashesshort|&\gitcommitparenthashesshort \\
+\verb|\gitcommitauthorname|&\gitcommitauthorname \\
+\verb|\gitcommitauthornamemapped|&\gitcommitauthornamemapped \\
+\verb|\gitcommitauthoremail|&\gitcommitauthoremail \\
+\verb|\gitcommitauthoremailmapped|&\gitcommitauthoremailmapped \\
+\verb|\gitcommitauthordate|&\gitcommitauthordate \\
+\verb|\gitcommitcommittername|&\gitcommitcommittername \\
+\verb|\gitcommitcomitternamemapped|&\gitcommitcomitternamemapped \\
+\verb|\gitcommitcommitteremail|&\gitcommitcommitteremail \\
+\verb|\gitcommitcommitteremailmapped|&\gitcommitcommitteremailmapped \\
+\verb|\gitcommitcommitterdate|&\gitcommitcommitterdate \\
+\verb|\gitcommitrefnames|&\gitcommitrefnames \\
+\verb|\gitcommitencoding|&\gitcommitencoding \\
+\verb|\gitcommitsubject|&\gitcommitsubject \\
+\verb|\gitcommitsubjectsanitised|&\gitcommitsubjectsanitised \\
+\verb|\gitcommitbody|&\gitcommitbody \\
+\verb|\gitcommitbodyraw|&\gitcommitbodyraw \\
+\verb|\gitcommitnotes|&\gitcommitnotes \\
+\verb|\gitcommitsignaturestatus|&\gitcommitsignaturestatus \\
+\verb|\gitcommitsigner|&\gitcommitsigner \\
+\verb|\gitcommitkey|&\gitcommitkey \\
+\verb|\gitcommitreflogselector|&\gitcommitreflogselector \\
+\verb|\gitcommitreflogselectorshort|&\gitcommitreflogselectorshort \\
+\verb|\gitcommitreflogidentityname|&\gitcommitreflogidentityname \\
+\verb|\gitcommitreflogidentitynamemapped|&\gitcommitreflogidentitynamemapped \\
+\verb|\gitcommitreflogidentityemail|&\gitcommitreflogidentityemail \\
+\verb|\gitcommitreflogidentityemailmapped|&\gitcommitreflogidentityemailmapped \\
+\verb|\gitcommitreflogsubject|&\gitcommitreflogsubject \\
+\verb|\ifchangedsincegitcommit|&\ifchangedsincegitcommit true\else false\fi \\
+\verb|\|&\ \\
+\end{tabular}
+
+
 {\parindent0pt
 \ifingit Git branch: {\bf\gitbranch}\par
 Commit: {\bf\gitcommithash}\par
@@ -49,8 +92,7 @@ See \verb|https://github.com/earthspike/luatex-git| for more details/latest vers
 \section{Roadmap}
 
 \begin{enumerate}
-\item Add in reflog selectors, etc
-  
+
 \item Read which tags are pointing to the current commit
   
 \end{enumerate}
