@@ -17,6 +17,7 @@
 \fancyfoot[R]{\thepage}
 
 \usepackage{longtable}
+\usepackage{colortbl}
 
 \title{Reading status of \LaTeX\ source repository into document}
 \author{Earthspike}
@@ -35,9 +36,12 @@ This document demonstrates how to read the status of the git repo in
 which the document's source sits. More variables are documented in the
 \verb|luagit.sty| file.
 
-\begin{longtable}{p{0.5\textwidth} p{0.5\textwidth}}
-  Macro & Expansion for this file \\\hline
-  
+\arrayrulecolor[rgb]{.7,.7,1}
+\parindent0pt{\small
+\begin{longtable}[H]{p{0.5\textwidth}p{0.5\textwidth}}
+\noalign{\global\arrayrulewidth=2pt}\hline
+\noalign{\global\arrayrulewidth=1pt}Macro & Expansion for this file \\\hline
+\endhead
 \verb|\ifingit|&\ifingit true\else false\fi \\
 \verb|\gitbranch|&\gitbranch \\
 \verb|\gitcommithash|&\gitcommithash \\
@@ -74,8 +78,9 @@ which the document's source sits. More variables are documented in the
 \verb|\gitcommitreflogidentityemailmapped|&\gitcommitreflogidentityemailmapped \\
 \verb|\gitcommitreflogsubject|&\gitcommitreflogsubject \\
 \verb|\ifchangedsincegitcommit|&\ifchangedsincegitcommit true\else false\fi \\
+\noalign{\global\arrayrulewidth=2pt}\hline
 \end{longtable}
-
+}
 
 
 See \verb|https://github.com/earthspike/luatex-git| for more details/latest version.
